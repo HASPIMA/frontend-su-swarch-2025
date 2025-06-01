@@ -1,0 +1,16 @@
+services:
+  mu_su_fe:
+    build:
+      context: .
+      args:
+        mode: ${mu_su_fe_MODE:-prod}
+
+    container_name: ${mu_su_fe_HOSTNAME:-mu_su_fe}
+
+    hostname: ${mu_su_fe_HOSTNAME:-mu_su_fe}
+
+    environment:
+      API_GATEWAY: http://${mu_ag_HOSTNAME:-localhost}:${mu_ag_INTERNAL_PORT:-4000}/query
+
+    ports:
+      - ${mu_su_fe_EXPOSED_PORT:-8080}:3000
