@@ -1,0 +1,18 @@
+# --- .prodignore ---
+# Ignore files and directories that should not be included in the production build.
+
+# git related files
+.git
+.gitignore
+
+# Docs
+README.md
+.env.example
+
+# Docker related files
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Allow Environment Variables
+!.env

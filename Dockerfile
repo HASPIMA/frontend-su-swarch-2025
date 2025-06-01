@@ -23,7 +23,8 @@ RUN echo "Running in $mode mode with NODE_ENV=$NODE_ENV"
 
 EXPOSE 3000
 
-# Pass mode as an environment variable to be used by npm scripts
-ENV MODE=${mode}
-CMD ["npm", "run", "${MODE}:start"]
+RUN npm run pre${mode}:start
 
+# Set up entrypoint to handle mode-based script selection
+ENTRYPOINT ["npm", "run"]
+CMD ["${mode}:start"]
