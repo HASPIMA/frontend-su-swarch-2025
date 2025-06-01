@@ -13,9 +13,9 @@
     "lint:fix": "next lint --fix",
     "preview": "next build && next start",
     "start": "next start",
-    "predev:start": "echo Ready!",
+    "pre:dev:start": "echo \"No need to build\"",
     "dev:start": "npm run dev",
-    "preprod:start": "npm run build",
+    "pre:prod:start": "npm run build",
     "prod:start": "npm start",
     "typecheck": "tsc --noEmit"
   },

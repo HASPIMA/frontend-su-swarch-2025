@@ -15,16 +15,17 @@ COPY . .
 #   `dev` -> development
 ARG mode=prod
 
-# Set NODE_ENV based on mode
+# Set NODE_ENV and MODE based on build arg
 ENV NODE_ENV=${mode/dev/development}
 ENV NODE_ENV=${NODE_ENV/prod/production}
+ENV MODE=${mode}
 
 RUN echo "Running in $mode mode with NODE_ENV=$NODE_ENV"
 
 EXPOSE 3000
 
-RUN npm run pre${mode}:start
+# This forces the scripts to run on build time
+RUN npm run pre:${mode}:start
 
-# Set up entrypoint to handle mode-based script selection
-ENTRYPOINT ["npm", "run"]
-CMD ["${mode}:start"]
+# Set up script selection based on mode
+ENTRYPOINT ["sh", "-c", "exec npm run $MODE:start"]
