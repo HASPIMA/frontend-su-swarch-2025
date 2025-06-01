@@ -3,8 +3,8 @@
  * for Docker builds.
  */
 import "./src/env.ts";
+import type { NextConfig } from "next";
 
-/** @type {import("next").NextConfig} */
-const config = {};
+const config: NextConfig = {};
 
 export default config;
